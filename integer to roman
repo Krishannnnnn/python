@@ -1,0 +1,22 @@
+class Solution(object):
+    def intToRoman(self, num):
+        # Paso #1: Listas de valores romanos
+        listado_unidad = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+        listado_decena = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
+        listado_centena = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
+        listado_millar = ["", "M", "MM", "MMM"]
+
+        # Paso #2: Obtener las unidades, decenas, centenas y millares
+        millar = num // 1000
+        centena = (num % 1000) // 100
+        decena = (num % 100) // 10
+        unidad = num % 10
+
+        # Paso #3: Convertir cada unidad a su valor romano
+        millar_romano = listado_millar[millar]
+        centena_romano = listado_centena[centena]
+        decena_romano = listado_decena[decena]
+        unidad_romano = listado_unidad[unidad]
+
+        # Paso #4: Concatenar las unidades para formar el número romano
+        return millar_romano + centena_romano + decena_romano + unidad_romano
