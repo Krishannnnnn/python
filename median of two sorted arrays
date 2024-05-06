@@ -1,0 +1,32 @@
+class Solution:
+    def findMedianSortedArrays(self, nums1, nums2):
+        # paso #1
+        mediana1 = 0
+        mediana2 = 0
+        tamano1 = len(nums1)
+        tamano2 = len(nums2)
+        indice1 = 0
+        indice2 = 0
+ 
+        # paso #2
+        finalRecorrido = (tamano1 + tamano2) // 2
+        for i in range(finalRecorrido + 1):
+            # paso #3
+            mediana1 = mediana2
+ 
+            # paso #4
+            if indice1 >= tamano1:
+                mediana2 = nums2[indice2]
+                indice2 += 1
+            elif indice2 >= tamano2 or nums1[indice1] < nums2[indice2]:
+                mediana2 = nums1[indice1]
+                indice1 += 1
+            else:
+                mediana2 = nums2[indice2]
+                indice2 += 1
+ 
+        # paso #5
+        if ((tamano1 + tamano2) % 2 == 0):
+            return (mediana1 + mediana2) / 2.0
+        else:
+            return mediana2
